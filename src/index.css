@@ -126,3 +126,69 @@ body {
   font-size: 16px;
   color: #333;
 }
+
+@media (max-width: 900px) {
+  .app {
+    padding: 30px;
+  }
+
+  .app-title {
+    font-size: 26px;
+  }
+
+  .todo-form input,
+  .add-btn {
+    font-size: 15px;
+  }
+
+  .stats-bar {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .app {
+    padding: 20px;
+  }
+
+  .app-title {
+    font-size: 22px;
+    gap: 6px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .todo-form {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .add-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .filter-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .todo-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .stats-bar {
+    flex-direction: column;
+    gap: 6px;
+    font-size: 15px;
+  }
+}
