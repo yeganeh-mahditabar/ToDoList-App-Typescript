@@ -1,54 +1,30 @@
-import { useState } from 'react';
 import TodoForm from './components/TodoForm';
 import TodoItem from './components/TodoItem';
 import FilterBar from './components/FilterBar';
 import StatsBar from './components/StatsBar';
-import type { Todo } from './types/todo';
 import { LuNotepadText } from 'react-icons/lu';
-import { getData, setData, LOCAL_STORAGE_KEY } from './utils/localStorage';
 import './index.css';
+import { useSelector } from 'react-redux';
+import type { RootState } from './app/store';
 
 const App = () => {
-  const [todos, setTodos] = useState<Todo[]>(() => {
-    return getData<Todo[]>(LOCAL_STORAGE_KEY) || [];
+  const { items, filter } = useSelector((state: RootState) => state.todos);
+
+  const filteredTodos = items.filter((todo) => {
+    if (filter === 'Completed') return todo.completed;
+    if (filter === 'Active') return !todo.completed;
+    return true;
   });
-  const [filter, setFilter] = useState('All');
-
-  const updateTodos = (newTodos: Todo[]) => {
-    setTodos(newTodos);
-    setData(LOCAL_STORAGE_KEY, newTodos);
-  };
-
-  
-  const addTodo = (text: string) => {
-    const newTodo: Todo = { id: Date.now(), text, completed: false };
-    updateTodos([...todos, newTodo]);
-  };
-
-  const toggleTodo = (id: number) => {
-    const updated = todos.map((t) =>
-      t.id === id ? { ...t, completed: !t.completed } : t
-    );
-    updateTodos(updated);
-  };
-
-  const deleteTodo = (id: number) => {
-    const updated = todos.filter((t) => t.id !== id);
-    updateTodos(updated);
-  };
-
-  const filteredTodos =
-    filter === 'All' ? todos : todos.filter((t) => t.completed === (filter === 'Completed'));
 
   return (
     <div className="app">
       <h1 className="app-title"><LuNotepadText className="title-icon" />To-Do App</h1>
-      <TodoForm onAdd={addTodo} />
-      <FilterBar currentFilter={filter} onChangeFilter={setFilter} />
-      <StatsBar total={todos.length} completed={todos.filter((t) => t.completed).length}/>
+      <TodoForm />
+      <FilterBar />
+      <StatsBar />
       <div className="todo-list">
         {filteredTodos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} onToggle={toggleTodo} onDelete={deleteTodo} />
+          <TodoItem key={todo.id} todo={todo} />
         ))}
       </div>
     </div>

@@ -1,10 +1,11 @@
+import { useSelector } from "react-redux";
+import type { RootState } from "../app/store";
 
-interface StatsBarProps {
-  total: number;
-  completed: number;
-}
 
-const StatsBar = ({ total, completed }: StatsBarProps) => {
+const StatsBar = () => {
+  const todos = useSelector((state: RootState) => state.todos.items);
+  const total = todos.length;
+  const completed = todos.filter((t) => t.completed).length;
   const remaining = total - completed;
 
   return (
