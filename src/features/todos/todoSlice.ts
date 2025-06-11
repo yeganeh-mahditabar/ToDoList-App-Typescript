@@ -1,8 +1,8 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { Todo } from '../../types/todo';
-import { getData, setData, LOCAL_STORAGE_KEY } from '../../utils/localStorage';
+import type { Todo } from '@/types/todo';
+import { getData, setData, LOCAL_STORAGE_KEY } from '@/utils/localStorage';
 
 interface TodosState {
   items: Todo[];

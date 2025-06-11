@@ -1,8 +1,8 @@
 import React from 'react';
-import type { Todo } from '../types/todo';
+import type { Todo } from '@/types/todo';
 import { FaTrashAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { deleteTodo, toggleTodo } from '../features/todos/todoSlice';
+import { deleteTodo, toggleTodo } from '@/features/todos/todoSlice';
 
 
 const TodoItem = ({ todo }: { todo: Todo }) => {

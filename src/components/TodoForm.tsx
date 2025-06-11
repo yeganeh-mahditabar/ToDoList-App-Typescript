@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { addTodo } from '../features/todos/todoSlice';
+import { addTodo } from '@/features/todos/todoSlice';
 
 const TodoForm = () => {
   const [text, setText] = useState('');

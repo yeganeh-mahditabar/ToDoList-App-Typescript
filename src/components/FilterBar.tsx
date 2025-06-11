@@ -1,6 +1,6 @@
-import type { RootState } from "../app/store";
+import type { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
-import { changeFilter } from "../features/todos/todoSlice";
+import { changeFilter } from "@/features/todos/todoSlice";
 
 
  const filters = ['All', 'Active', 'Completed'] as const;
