@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeFilter } from "../features/todos/todoSlice";
 
 
- const filters: ('All' | 'Completed' | 'Active')[] = ['All', 'Active', 'Completed'];
+ const filters = ['All', 'Active', 'Completed'] as const;
 
 
 const FilterBar = () => {
