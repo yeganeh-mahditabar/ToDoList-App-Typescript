@@ -1,14 +1,12 @@
-import type { RootState } from "@/app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { changeFilter } from "@/features/todos/todoSlice";
+import { todoFilterSelector } from "@/features/todos/todoSelectors";
 
-
- const filters = ['All', 'Active', 'Completed'] as const;
-
+const filters = ["All", "Active", "Completed"] as const;
 
 const FilterBar = () => {
   const dispatch = useDispatch();
-  const currentFilter = useSelector((state: RootState) => state.todos.filter);
+  const currentFilter = useSelector(todoFilterSelector);
 
   return (
     <div className="filter-bar">
@@ -16,7 +14,7 @@ const FilterBar = () => {
         <button
           key={item}
           onClick={() => dispatch(changeFilter(item))}
-          className={`filter-btn ${item === currentFilter ? 'active' : ''}`}
+          className={`filter-btn ${item === currentFilter ? "active" : ""}`}
         >
           {item}
         </button>
